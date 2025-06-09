@@ -5,6 +5,7 @@ import { connectDB } from './config/db.js';
 
 // last
 import authRoutes from './routes/authRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 
 
@@ -15,13 +16,14 @@ const app = express();
 app.use(express.json());
 
 // last
-app.use('/api/auth', authRoutes);  // Authentication routes
+app.use('/api/auth', authRoutes); 
+app.use('/api/users', userRoutes); // Authentication routes
 
 
 
 // Sample route
 app.get('/', (req, res) => {
-  res.send('Book Buddy API is running...');
+  res.send('Book Buddy API crud running...');
 });
 
 const PORT = process.env.PORT || 5000;

@@ -6,7 +6,16 @@ const bookSchema = new mongoose.Schema({
   description: String,
   publishedDate: { type: Date, default: Date.now },
   imageUrl: String,
-  isAvailable: { type: Boolean, default: true }
+  // i add
+  isAvailable: { type: Boolean, default: true },
+    currentRental: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Rental'
+  },
+    rentalHistory: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Rental'
+  }]
 }, { timestamps: true });
 
 export const Book = mongoose.model('Book', bookSchema);

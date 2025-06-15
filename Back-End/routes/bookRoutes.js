@@ -4,11 +4,11 @@ import { protect, adminOnly } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-// ✅ Public routes (users + admin)
+//  Public routes (users + admin)
 router.get('/', ctrl.getBooks);
 router.get('/:id', ctrl.getBook);
 
-// ✅ Admin-only routes
+//  Admin-only routes
 router.post('/', protect, adminOnly, ctrl.createBook);
 router.put('/:id', protect, adminOnly, ctrl.updateBook);
 router.delete('/:id', protect, adminOnly, ctrl.deleteBook);

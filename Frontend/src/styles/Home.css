@@ -1,0 +1,105 @@
+/* Purple brand colour for navbar */
+.bg-purple {
+  background: #7a00c5; 
+  height: 50px; 
+  
+          /* tweak to match your design */
+}
+
+#nav{
+  width: 90%;
+  margin: auto;
+}
+
+.btn-purple {
+  background-color: #712D72;
+  color: white;
+  border: none;
+}
+.btn-purple:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn-dark {
+  background-color: black;
+  color: white;
+  border: none;
+}
+.btn-dark:hover {
+  background-color: #712D72;
+  color: white;
+}
+
+
+
+
+/* Clip bottom‑right of hero image for curved corner */
+.hero-img {
+  clip-path: inset(0 0 0 0 round 0 0 0 30%);
+  width: 620px; /* Adjust as needed */
+  height: 480px; /* Adjust as needed */
+    margin-left: 420px;
+
+    
+    
+}
+
+/* Quote card styling & placement */
+.quote-card {
+  background: #d9d9d9;
+  width: 330px; /* Adjust as needed */
+  height: 220px;
+  position: absolute;
+  top: 50%;
+  left: 19%;
+  transform: translateY(-50%);
+}
+
+
+
+/* Book Card Styling */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 1rem;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+  
+}
+
+.card-img-top {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.card-text {
+  font-size: 0.95rem;
+}
+
+.btn-outline-primary {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #6f42c1;
+  color: white;
+  border-color: #6f42c1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-img-top {
+    height: 300px;
+  }
+}
+

@@ -8,7 +8,24 @@ const userSchema = new mongoose.Schema(
     
     role: { type: String, enum: ['user', 'admin'], default: 'user' }
   },
-  { timestamps: true }
+ {
+  timestamps: true,
+  id: false, // Disable automatic "id"
+  toJSON: {
+    virtuals: true,
+    transform: function (doc, ret) {
+      const result = {
+        user_id: ret._id,      //  first key
+        name: ret.name,
+        email: ret.email,
+        role: ret.role,
+        createdAt: ret.createdAt,
+        updatedAt: ret.updatedAt
+      };
+      return result;
+    }
+  }
+}
 );
 
 export const User = mongoose.model('User', userSchema);

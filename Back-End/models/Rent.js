@@ -13,64 +13,80 @@ const rentSchema = new mongoose.Schema({
   },
   rentDate: {
     type: Date,
-    default: Date.now,
+    // Set by admin upon approval
+  },
+  expectedReturnDate: {
+    type: Date,
+    // Set by admin, typically 14 days from rentDate
   },
   returnDate: {
     type: Date,
-    default: function() {
-      const today = new Date();
-      const returnDate = new Date(this.rentDate);
-      returnDate.setDate(returnDate.getDate() + 14); // Assuming a 14-day rental period
-      return returnDate < today ? today : returnDate; // Ensure return date is not in the past
-    },
+    // Filled when the user returns the book
   },
-
-  handoverDate: {
-    type: Date,
-    default: null, // This will be set when the book is handed over
-  },
-
-  // Adding payment status and total cost
   paymentStatus: {
     type: String,
-    enum: ['pending', 'paid', 'refunded',],
-    default: 'pending'
+    enum: ['pending', 'paid', 'refunded'],
+    default: 'pending',
   },
-
-  
+  rentStatus: {
+    type: String,
+    enum: ['pending', 'approved', 'rejected','returned'],
+    default: 'pending',
+  },
   totalCost: {
     type: Number,
     required: true,
-    default: 0
+    default: 0,
   },
-  latefee: {
+  lateFee: {
     type: Number,
-    default: 0 // This will be calculated based on the return date
+    default: 0,
   },
-
-
-   status: {
-    type: String,
-    enum: ['active', 'completed', 'overdue', 'cancelled'],
-    default: 'active'
-  }
-  
-}, { timestamps: true });
-
-
-// Middleware to calculate late fee before saving
-// Pre-save hook to calculate late fee
-rentSchema.pre('save', function (next) {
-  if (this.returnDate && this.expectedReturnDate) {
-    const lateDays = Math.ceil((this.returnDate - this.expectedReturnDate) / (1000 * 60 * 60 * 24));
-    if (lateDays > 0) {
-      const feePerDay = 10; // Example: ₹10 per day
-      this.lateFee = lateDays * feePerDay;
-    } else {
-      this.lateFee = 0;
-    }
-  }
-  next();
+}, {
+  timestamps: true,
 });
 
+
+
+// Admin - Update rent
+export const updateRent = async (req, res) => {
+  try {
+    const rent = await Rent.findById(req.params.id);
+    if (!rent) return res.status(404).json({ message: "Rent not found" });
+
+    // Allow admin to update fields
+    if (req.body.rentDate) rent.rentDate = new Date(req.body.rentDate);
+
+    // Set expectedReturnDate (default +14 days from rentDate, or custom by admin)
+    if (req.body.expectedReturnDate) {
+      rent.expectedReturnDate = new Date(req.body.expectedReturnDate);
+    } else if (rent.rentDate && !rent.expectedReturnDate) {
+      rent.expectedReturnDate = new Date(rent.rentDate.getTime() + 14 * 24 * 60 * 60 * 1000);
+    }
+
+    // Set returnDate
+    if (req.body.returnDate) {
+      rent.returnDate = new Date(req.body.returnDate);
+
+      // Calculate late fee
+      const lateDays = Math.ceil((rent.returnDate - rent.expectedReturnDate) / (1000 * 60 * 60 * 24));
+      rent.lateFee = lateDays > 0 ? lateDays * 50 : 0;
+    }
+
+    // Other fields
+    if (req.body.status) rent.status = req.body.status;
+    if (req.body.paymentStatus) rent.paymentStatus = req.body.paymentStatus;
+    if (req.body.totalCost !== undefined) rent.totalCost = req.body.totalCost;
+
+    await rent.save();
+
+    res.json(rent);
+  } catch (err) {
+    res.status(500).json({ message: "Update failed", error: err.message });
+  }
+};
+
+
+
 export const Rent = mongoose.model('Rent', rentSchema);
+

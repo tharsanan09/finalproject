@@ -1,0 +1,30 @@
+.logo{
+  margin-left: 20px;
+  width: 60px;
+  margin-top: 5px;
+}
+
+
+#nav{
+  width: 90%;
+  height: 50px;
+  margin: auto;
+  background: linear-gradient(to right, #AF1FD3,#2B0735);
+}
+
+.btn-dark {
+  background-color: #AF1FD3;
+  color: white;
+  border: none;
+}
+.btn-dark:hover {
+  background-color: royalblue;
+  color: white;
+}
+
+.nav-link{
+  color: azure !important;
+}
+.nav-link:hover{
+  color: lightseagreen !important;
+}

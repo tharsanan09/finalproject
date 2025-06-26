@@ -1,105 +1,141 @@
-/* Purple brand colour for navbar */
-.bg-purple {
-  background: #7a00c5; 
-  height: 50px; 
-  
-          /* tweak to match your design */
-}
-
-#nav{
-  width: 90%;
-  margin: auto;
-}
-
-.btn-purple {
-  background-color: #712D72;
-  color: white;
-  border: none;
-}
-.btn-purple:hover {
-  background-color: black;
-  color: white;
-}
-
-.btn-dark {
-  background-color: black;
-  color: white;
-  border: none;
-}
-.btn-dark:hover {
-  background-color: #712D72;
-  color: white;
-}
-
-
-
 
 /* Clip bottom‑right of hero image for curved corner */
 .hero-img {
   clip-path: inset(0 0 0 0 round 0 0 0 30%);
-  width: 620px; /* Adjust as needed */
-  height: 480px; /* Adjust as needed */
-    margin-left: 420px;
-
-    
-    
+  width: 580px; /* Adjust as needed */
+  height: 460px; /* Adjust as needed */
+    margin-left: 420px;  
 }
+
 
 /* Quote card styling & placement */
 .quote-card {
   background: #d9d9d9;
-  width: 330px; /* Adjust as needed */
-  height: 220px;
+  width: 330px; 
+  height: 200px;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 19%;
-  transform: translateY(-50%);
+  transform: translateY(-25%);
+  font-family: cursive;
+}
+
+/* Home imageSmooth image zoom */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Smooth card lift */
+
+.hover-lift:hover {
+  
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* section 2 book cards */
+
+
+
+.book-image {
+  width: 70%;
+  height: 210px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+#btnmore{
+  background-color: black;
+  color: white;
+   margin-left: 770px;
+  
+  
+}
+.book-img:hover {
+  transform: scale(1.05);
+}
+
+.rounded-start-top {
+  border-top-left-radius: 50% !important;
+  margin-left: 50px;
 }
 
 
-
-/* Book Card Styling */
-.card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 1rem;
+.rounded-center {
+  border-radius: 30px !important;
+  margin-top: 150px;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+.rounded-end-top {
+  border-top-right-radius: 50% !important;
+  margin-right: 50px;
+}
 
+/* section  3 */
+
+.borrow-highlight{
+  margin-top: 40px;
+}
+
+  .glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;;
+}
+.glass-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+color: #7a00c5;
   
 }
 
-.card-img-top {
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  object-fit: cover;
-}
+/* section 4 */
 
-.card-title {
-  font-size: 1.1rem;
-  color: #333;
-}
-
-.card-text {
-  font-size: 0.95rem;
-}
-
-.btn-outline-primary {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn-outline-primary:hover {
+/* section 5 */
+.btn-purple {
   background-color: #6f42c1;
   color: white;
-  border-color: #6f42c1;
+  border: none;
+}
+.btn-purple:hover {
+  background-color: #5936a3;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .card-img-top {
-    height: 300px;
-  }
+.carousel-item {
+  padding: 40px 20px;
+  
 }
+
+.carousel-item img {
+  max-height: 300px;
+  object-fit: cover;
+}
+.text-purple {
+  color: #6f42c1;
+}
+
+
+
+.text-purplehome {
+  color: #6f42c1;
+}
+
+.btn-purple {
+  background-color: #6f42c1;
+  color: white;
+  border: none;
+}
+
+.btn-purple:hover {
+  background-color: #59359c;
+}
+
+
+
+
+  
+
+
 

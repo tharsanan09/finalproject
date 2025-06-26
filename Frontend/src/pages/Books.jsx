@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Books.css';
-import book1 from '../assets/book1.jpeg';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import book1 from '../assets/book1.jpeg';
 import book2 from '../assets/book2.jpeg';
 import book3 from '../assets/book3.jpeg';
 import book4 from '../assets/book4.jpeg';
@@ -14,7 +14,7 @@ const Books = () => {
       <div className="row">
         {/* Sidebar */}
         <div className="col-md-3">
-          <div className="sidebar  shadow-sm p-3 rounded">
+          <div className="sidebar shadow-sm p-3 rounded">
             <h5>Categories</h5>
             <ul className="nav flex-column">
               <li className="nav-item"><a className="nav-link" href="#">English</a></li>
@@ -27,15 +27,15 @@ const Books = () => {
 
         {/* Main content */}
         <div className="col-md-9">
-          <h3 className="text-center mt-3 mb-4 fw-bold">Explore Our Collection</h3>
+          <h4 className="text-center mt-3 mb-4 fw-bold">Explore Our Collection</h4>
 
           {/* Search */}
-          <div className="search-bar mb-4">
+          <div className="search-bar mb-4 ">
             <input type="text" className="form-control search-input" placeholder="Search books..." />
           </div>
 
           {/* Book Grid - 3 rows x 3 columns */}
-          <div className="row row-cols-1 row-cols-md-3 g-4">
+          <div className="row book2 row-cols-md-4 g-4">
             <BookCard title="Book Title 1" price="100" image={book1} />
             <BookCard title="Book Title 2" price="299" image={book2} />
             <BookCard title="Book Title 3" price="399" image={book3} />
@@ -55,14 +55,14 @@ const Books = () => {
 // ✅ BookCard Component
 const BookCard = ({ title, price, image }) => {
   return (
-    <div className="col">
+    <div className="col" >
       <div className="card book-card h-100">
         <img src={image} className="card-img-top book-img" alt={title} />
         <div className="card-body">
-          <h5 className="card-title">{title}</h5>
-          <p className="card-text">Author: Sample Author</p>
-          <p className="card-text text-primary fw-semibold">Rs. {price}.00</p>
-          <button className="btn btn-outline-primary w-100">More Details</button>
+          <h5 className="card-title" style={{fontSize:'16px'}}>{title}</h5>
+          <p className="card-text" style={{fontSize:'12px'}}>Author: Sample Author</p>
+          <p className="card-text  fw-semibold" style={{fontSize:'13px'}}>Rs. {price}.00</p>
+          <button className="btn btn-purple  w-100" style={{fontSize:'12px'}}>View</button>
         </div>
       </div>
     </div>

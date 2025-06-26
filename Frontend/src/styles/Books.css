@@ -1,28 +1,53 @@
 .book-img {
-  height: 250px;
-  object-fit: cover;
+  height: 150px;
+  
 }
 
 .book-card {
   transition: transform 0.3s ease;
   text-align: center;
-
 }
+.search-bar{
+  margin-left: -110px;
+}
+.card-body{
+  height: 150px;
+}
+.book2{
+  margin-left: -120px;
+}
+
 
 .book-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+
+}
+.btn-outline-primary{
+  background-color: #AF1FD3;
+  color: white;
+}
+.btn-outline-primary:hover {
+  background-color: #6f42c1;
+  color: white;
+  border-color: #6f42c1;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #000;
 }
 
 .sidebar {
-  background-color: #7a00c5;
+    background: linear-gradient(to bottom, #AF1FD3,#2B0735);
+
   padding: 20px;
   border-radius: 10px;
   color: white;
   position: fixed;
   
   left: 0px;
-  width: 200px;
+  width: 170px;
   height: calc(100% - 40px);
   overflow-y: auto;
 }
@@ -30,31 +55,34 @@
 .sidebar h5 {
   margin-bottom: 20px;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  margin-top: 40px;
 }
 
 .sidebar .nav-link {
   padding: 8px 0;
   color: #ffffff;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 500;
   display: block;
   margin-left: 30px;
 }
 
 .sidebar .nav-link:hover {
-  color: #6f42c1;
+  color: black;
 }
 
 .search-bar {
   margin-top: 20px;
+  width: 60%;
 }
 
 .search-input {
   border-radius: 20px;
   padding: 8px 16px;
   border: 1px solid #ced4da;
+  height: 35px;
 }
 
 

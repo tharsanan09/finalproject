@@ -4,7 +4,17 @@ import Navbar from './components/Navbar.jsx'
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
 import Books from './pages/Books.jsx'
-import { Route, Routes } from 'react-router-dom'
+import Register from './pages/Register.jsx'
+import FeedbackForm  from './components/FeedbackForm'
+
+import { Route, Routes,Router } from 'react-router-dom'
+import UserDashboard from './pages/Dashboard/UserDashboard.jsx'
+import AdminDashboard from './pages/Dashboard/AdminDashboard.jsx'
+import BookDetails from './pages/BookDetails.jsx'
+import BookDetails2 from './pages/BookDetails2.jsx'
+
+
+
 
 function App() {
 
@@ -16,10 +26,19 @@ function App() {
         <Route path="/" element={<Home></Home>} />
         <Route path="/login" element={<Login></Login>} />
         <Route path="/books" element={<Books></Books>} />
+        <Route path="/register" element={<Register></Register>} />
+        <Route path="/feedback" element={<FeedbackForm></FeedbackForm>} />
+        
+        <Route path="/admin" element={<AdminDashboard></AdminDashboard>} />
+        <Route path="/user" element={<UserDashboard></UserDashboard>} />
+        <Route path="/BookDetails" element={<BookDetails></BookDetails>} />
+        <Route path="/BookDetails2" element={<BookDetails2></BookDetails2>} />
+        
         {/* Add more routes as needed */}
         
       
       </Routes>
+    
 
     </>
   )

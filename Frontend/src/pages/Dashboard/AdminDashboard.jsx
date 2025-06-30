@@ -1,17 +1,28 @@
 import React from 'react';
 import "../../styles/AdminDashboard.css";
-
+import { useNavigate } from 'react-router-dom';
 import { FaBook, FaUser, FaTruck, FaExclamationCircle } from 'react-icons/fa';
+  import AdminUserTable from './Managements/AdminUserTable';
+  import BookManagement from './Managements/BookManagement';
 
 const AdminDashboard = () => {
+  const navigate = useNavigate(); // ✅ Initialize navigation hook
+
   return (
     <div className="container ">
       {/* Top Tabs */}
-      <div className="d-flex2  mb-4">
-        <button className="btn btn-purple px-3 rounded-pill">User management</button>
-        <button className="btn btn-purple px-3 rounded-pill">Book management</button>
-        <button className="btn btn-purple px-3 rounded-pill">Borrow management</button>
-        <button className="btn btn-purple px-3 rounded-pill">Payment management</button>
+      <div className="d-flex gap-3 mt-5 mb-4">
+        <button
+          onClick={() => navigate('/admin/users')}
+          className="btn mt-3 btn-purple px-3 rounded-pill"
+        >
+          User Management
+        </button>
+        <button onClick={() => navigate('/admin/bookmanagement')} className="btn mt-3 btn-purple px-3 rounded-pill">Book Management</button>
+
+
+        <button className="btn mt-3 btn-purple px-3 rounded-pill">Borrow Management</button>
+        <button className="btn mt-3 btn-purple px-3 rounded-pill">Payment Management</button>
       </div>
 
       {/* Dashboard Header */}
@@ -20,7 +31,7 @@ const AdminDashboard = () => {
       </h4>
 
       {/* Statistics Cards */}
-      <div className="row g-4 ">
+      <div className="row g-4">
         <div className="col-md-4 w-25">
           <div className="dashboard-card shadow-sm p-3 text-center">
             <FaBook size={30} className="mb-2" />

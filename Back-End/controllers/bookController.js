@@ -1,30 +1,44 @@
 import { Book } from '../models/Book.js';
 
-// Admin - Create book
+// ✅ Admin - Create book
 export const createBook = async (req, res) => {
   try {
-    const { title, author, description, publishedDate, isAvailable } = req.body;
-
-    // Use uploaded file path if exists
-    const imageUrl = req.file ? `/uploads/${req.file.filename}` : '';
-
-    const book = await Book.create({
+    const {
       title,
       author,
-      isbn: req.body.isbn || '', // Optional ISBN
       description,
       publishedDate,
+      language,
+      isbn,
+      price,
+      rentPeriod,
+      lateFee,
       isAvailable,
       imageUrl
+    } = req.body;
+
+    const newBook = new Book({
+      title,
+      author,
+      description,
+      publishedDate,
+      language,
+      isbn,
+      price,
+      rentPeriod,
+      lateFee,
+      isAvailable,
+      imageUrl // ✅ This should be the Cloudinary image URL
     });
 
-    res.status(201).json(book);
+    await newBook.save();
+    res.status(201).json(newBook);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
-//  Public - Get all books
+// ✅ Public - Get all books
 export const getBooks = async (req, res) => {
   try {
     const books = await Book.find();
@@ -34,7 +48,7 @@ export const getBooks = async (req, res) => {
   }
 };
 
-//  Public - Get single book
+// ✅ Public - Get single book
 export const getBook = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
@@ -45,7 +59,7 @@ export const getBook = async (req, res) => {
   }
 };
 
-//  Admin - Update book
+// ✅ Admin - Update book
 export const updateBook = async (req, res) => {
   try {
     const book = await Book.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -56,7 +70,7 @@ export const updateBook = async (req, res) => {
   }
 };
 
-//  Admin - Delete book
+// ✅ Admin - Delete book
 export const deleteBook = async (req, res) => {
   try {
     const book = await Book.findByIdAndDelete(req.params.id);

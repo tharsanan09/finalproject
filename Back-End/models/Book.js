@@ -28,12 +28,10 @@ const bookSchema = new mongoose.Schema({
   publishedDate: {
     type: Date
   },
+  
   language: {
     type: String,
     default: 'Tamil'
-  },
-  pages: {
-    type: Number
   },
   imageUrl: {
     type: String // Image path or URL
@@ -58,7 +56,10 @@ const bookSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Rental'
   }
-}, {
+}, 
+
+
+{
   timestamps: true,
   id: false,
  toJSON: {

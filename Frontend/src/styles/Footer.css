@@ -1,7 +1,7 @@
 .footer{
-      background: linear-gradient(to bottom, #AF1FD3,#2B0735);
+      background-color: darkslategrey;
 }
   
 #you{
-    color: white;
+    color: rgb(175, 159, 159);
 }

@@ -5,6 +5,8 @@ import book7 from '../assets/book7.jpg';
 import UserDetailsForm from './UserDetailsForm'; // Import your form component
 
 const BookDetails = () => {
+
+  
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
 
@@ -33,20 +35,7 @@ const BookDetails = () => {
             className="img-fluid rounded-4 shadow"
             style={{ maxHeight: '300px', objectFit: 'cover' }}
           />
-        </div>
-
-        {/* Book Info */}
-        <div className="col-md-5">
-          <h5 className="fw-bold mb-2">Book Name</h5>
-          <p className="fw-semibold">Author - Af. Abthul</p>
-          <p className="fw-semibold text-success">Rent Price: ₹50</p> {/* ✅ Added line */}
-
-
-          <p className="text-muted mb-1">Books open the door to new ideas, knowledge, and imagination.</p>
-          <p className="text-muted mb-1">Reading books helps us learn, grow, and see the world in new ways.</p>
-          <p className="text-muted mb-4">Books open the door to new ideas, knowledge, and imagination.</p>
-          
-          <div className="d-flex gap-3">
+           <div className="d-flex gap-5 " style={{ marginLeft: '100px',marginTop: '20px' }}>
             <button onClick={handleBack} className="btn btn-secondary px-4 rounded-pill">Back</button>
             <button 
               onClick={handleBorrowClick}
@@ -56,6 +45,29 @@ const BookDetails = () => {
             </button>
           </div>
         </div>
+
+        {/* Book Info */}
+  <div className="col-md-5">
+  <h5 className="fw-bold mb-2">Book Name</h5>
+  <p className="fw-semibold">Author - Af. Abthul</p>
+  
+  <p className="fw-semibold">ISBN: 978-1234567890</p>
+  <p className="fw-semibold">Language: English</p>
+
+  <p className="fw-semibold text-success">Rent Price: Rs:500</p>
+  <p className="fw-semibold">Rent Period: 14 days</p>
+
+  <p className="fw-semibold">
+    Status:
+    <span className="ms-2 badge bg-success">Available</span>
+    {/* Change to bg-danger if not available */}
+  </p>
+
+  <p className="text-muted mb-1">
+    Books open the door to new ideas, knowledge, and imagination.
+  </p>
+</div>
+
       </div>
 
       {/* User Details Modal */}

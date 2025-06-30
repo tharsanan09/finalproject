@@ -1,6 +1,5 @@
 .book-img {
   height: 150px;
-  
 }
 
 .book-card {
@@ -11,26 +10,15 @@
   margin-left: -110px;
 }
 .card-body{
-  height: 150px;
+  height: 130px;
 }
 .book2{
   margin-left: -120px;
 }
 
-
 .book-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
-
-}
-.btn-outline-primary{
-  background-color: #AF1FD3;
-  color: white;
-}
-.btn-outline-primary:hover {
-  background-color: #6f42c1;
-  color: white;
-  border-color: #6f42c1;
 }
 
 .card-text {
@@ -39,8 +27,7 @@
 }
 
 .sidebar {
-    background: linear-gradient(to bottom, #AF1FD3,#2B0735);
-
+  background: linear-gradient(to bottom, #AF1FD3,#2B0735);
   padding: 20px;
   border-radius: 10px;
   color: white;

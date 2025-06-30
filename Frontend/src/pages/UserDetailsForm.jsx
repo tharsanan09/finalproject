@@ -130,7 +130,7 @@ const UserDetailsForm = () => {
           </Form.Group>
 
           <div className="text-center mt-4">
-            <Button variant="primary" type="submit" className="px-4">
+            <Button type="submit" className="px-4 btn-purple ">
               Next
             </Button>
           </div>

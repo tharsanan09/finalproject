@@ -4,7 +4,6 @@
   margin-top: 5px;
 }
 
-
 #nav{
   width: 90%;
   height: 50px;
@@ -18,13 +17,18 @@
   border: none;
 }
 .btn-dark:hover {
-  background-color: royalblue;
   color: white;
 }
 
-.nav-link{
-  color: azure !important;
+#nav .navbar-nav .nav-link {
+  color: white !important;
 }
-.nav-link:hover{
+
+#nav .navbar-nav .nav-link:hover {
   color: lightseagreen !important;
+}
+
+#nav .navbar-nav .nav-link.active {
+  color: lightseagreen !important;
+  font-weight: bold;
 }

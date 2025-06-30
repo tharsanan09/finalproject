@@ -4,12 +4,12 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import cors from 'cors';
 
-// last
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import bookRoutes from './routes/bookRoutes.js';
 import rentRoutes from './routes/rentRoutes.js';
-import feedbackRoutes from './routes/feedbackRoutes.js'
+import feedbackRoutes from './routes/feedbackRoutes.js';
+
 
 dotenv.config();       // Load env variables
 connectDB();           // Connect to MongoDB
@@ -28,7 +28,6 @@ app.use('/api/books', bookRoutes);
 app.use('/api/rents', rentRoutes); // Rent routes
 app.use('/api/feedback', feedbackRoutes);
 app.use('/api/Uploads', express.static('Uploads')); // Serve static files from uploads directory
-
 
 // Sample route
 app.get('/', (req, res) => {

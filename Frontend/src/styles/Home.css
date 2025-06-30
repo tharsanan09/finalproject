@@ -7,7 +7,6 @@
     margin-left: 420px;  
 }
 
-
 /* Quote card styling & placement */
 .quote-card {
   background: #d9d9d9;
@@ -31,14 +30,10 @@
 /* Smooth card lift */
 
 .hover-lift:hover {
-  
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
-/* section 2 book cards */
-
-
-
+/* section 3 book cards */
 .book-image {
   width: 70%;
   height: 210px;
@@ -48,10 +43,10 @@
 #btnmore{
   background-color: black;
   color: white;
-   margin-left: 770px;
-  
-  
+   margin-left: 770px; 
+   margin-top: -150px; 
 }
+
 .book-img:hover {
   transform: scale(1.05);
 }
@@ -60,7 +55,6 @@
   border-top-left-radius: 50% !important;
   margin-left: 50px;
 }
-
 
 .rounded-center {
   border-radius: 30px !important;
@@ -72,8 +66,7 @@
   margin-right: 50px;
 }
 
-/* section  3 */
-
+/* section  2 */
 .borrow-highlight{
   margin-top: 40px;
 }
@@ -87,25 +80,19 @@
 .glass-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-color: #7a00c5;
-  
+color: #7a00c5; 
 }
 
 /* section 4 */
 
+
 /* section 5 */
-.btn-purple {
-  background-color: #6f42c1;
-  color: white;
-  border: none;
-}
 .btn-purple:hover {
   background-color: #5936a3;
 }
 
 .carousel-item {
-  padding: 40px 20px;
-  
+  padding: 40px 20px; 
 }
 
 .carousel-item img {
@@ -116,21 +103,12 @@ color: #7a00c5;
   color: #6f42c1;
 }
 
-
-
 .text-purplehome {
   color: #6f42c1;
 }
 
-.btn-purple {
-  background-color: #6f42c1;
-  color: white;
-  border: none;
-}
 
-.btn-purple:hover {
-  background-color: #59359c;
-}
+
 
 
 

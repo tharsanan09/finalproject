@@ -29,9 +29,9 @@ const Footer = () => {
           {/* Contact */}
           <div className="col-md-4 mb-4">
             <h6 className="fw-bold">Contact Us</h6>
-            <p className="small mb-1"><i className="bi bi-geo-alt-fill me-2"></i>123 Library St, Booktown</p>
-            <p className="small mb-1"><i className="bi bi-envelope-fill me-2"></i>support@bookbuddy.com</p>
-            <p className="small"><i className="bi bi-telephone-fill me-2"></i>+94 77 123 4567</p>
+            <p className="small mb-1"><i className="bi bi-geo-alt-fill me-2"></i>Kopay North, Jaffna</p>
+            <p className="small mb-1"><i className="bi bi-envelope-fill me-2"></i>tharsanan2000@gmail.com</p>
+            <p className="small"><i className="bi bi-telephone-fill me-2"></i>+94 766 918 266</p>
           </div>
         </div>
 

@@ -1,16 +1,16 @@
 .btn-purple {
-  background-color: #9c27b0;
+  background-color: #310a05;
   color: white;
   border: none;
 }
 .btn-purple:hover {
-  background-color: #7b1fa2;
+  background-color: #ad8042;
 }
 
 .dashboard-card {
   border: 1px solid #dcdcdc;
   border-radius: 12px;
-  background-color: #fff;
+  background-color: #90a955;
 }
 .bg-purple{
     background-color: #9c27b0;

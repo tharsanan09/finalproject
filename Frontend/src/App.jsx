@@ -14,6 +14,9 @@ import BookDetails2 from './pages/BookDetails2.jsx'
 import AdminUserTable from './pages/Dashboard/Managements/AdminUserTable.jsx'
 import PublishBook from './pages/publishBook.jsx'
 import BookManagement from './pages/Dashboard/Managements/BookManagement.jsx'
+import AdminFeedback from './pages/Dashboard/Managements/AdminFeedback.jsx'
+import UserDetailsForm from './pages/UserDetailsForm.jsx'
+import AdminRentManagement from './pages/Dashboard/Managements/AdminRentManagement.jsx'
 
 
 function App() {
@@ -34,11 +37,18 @@ function App() {
         <Route path="/user" element={<UserDashboard></UserDashboard>} />
         <Route path="/BookDetails" element={<BookDetails></BookDetails>} />
         <Route path="/BookDetail2" element={<BookDetails2></BookDetails2>} />
-        <Route path="/admin/users" element={<AdminUserTable></AdminUserTable>} />
         <Route path="/publish" element={<PublishBook></PublishBook>} />
-        <Route path="/admin/bookmanagement" element={<BookManagement></BookManagement>} />
+        <Route path="/userdetailsform" element={<UserDetailsForm></UserDetailsForm>} />
         
-        {/* Add more routes as needed */}
+        {/* Admin Management Routes */}
+
+        <Route path="/admin/users" element={<AdminUserTable></AdminUserTable>} />
+        <Route path="/admin/bookmanagement" element={<BookManagement></BookManagement>} />
+        <Route path="/admin/feedbacks" element={<AdminFeedback></AdminFeedback>} />
+        <Route path="/admin/adminrentmanagement" element={<AdminRentManagement></AdminRentManagement>} />
+        
+        {/* User Management Routes */}  
+        
         
       </Routes>
     

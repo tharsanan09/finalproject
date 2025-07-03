@@ -16,29 +16,31 @@ function Home() {
   
   return (
     <>
-    {/* section 1 */}
-    <section className="hero-wrapper container mt-4 position-relative">
-  <h2 className="text-center fw-bold" style={{ marginTop: '60px' }}>
-    Welcome To Book Buddy
-  </h2>
+    {/* section1 */}
+   <div className="full-width-bg" style={{ backgroundColor: '#caba9c', padding: '20px 0' }}>
+  <section className="hero-wrapper container position-relative">
+    <h2 className="text-center fw-bold" style={{ marginTop: '90px' }}>
+      
+    </h2>
 
-  {/* MAIN HERO IMAGE with hover effect */}
-  <img
-    src={bookhome}
-    className="img-fluid rounded-4 mt-2 hero-img hover-scale"
-    alt="Books"
-  />
+    {/* MAIN HERO IMAGE with hover effect */}
+    <img
+      src={bookhome}
+      className="img-fluid rounded-4 mt-2 hero-img hover-scale"
+      alt="Books"
+    />
 
-  {/* QUOTE CARD */}
-  <div className="quote-card p-4 text-center shadow-lg rounded hover-lift mt-3">
-    <h5 className="fw-bold">Books are like<br />gifts from God…</h5>
-    <p className="small mb-3">
-      Each page can light a path,<br />
-      heal a heart, or awaken a soul.
-    </p>
-    <button className="btn btn-purple">Get Start</button>
-  </div>
-</section>
+    {/* QUOTE CARD */}
+    <div className="quote-card p-4 text-center shadow-lg rounded hover-lift mt-3">
+      <h5 className="fw-bold">Books are like<br />gifts from God…</h5>
+      <p className="small mb-3">
+        Each page can light a path,<br />
+        heal a heart, or awaken a soul.
+      </p>
+      <button className="btn btn-purple">Get Start</button>
+    </div>
+  </section>
+</div>
 
  {/* section 2 */}
        <section className="borrow-highlight py-5" style={{ background: 'linear-gradient(to right, #f0f0f0, #e0e0e0)' }}>
@@ -127,10 +129,7 @@ function Home() {
       </div>
     </section>
 
-      
-
 {/* section 4 */}
-
 
  <section className="bg-light py-5 mt-5 rounded-4 shadow-sm">
       <div className="container">

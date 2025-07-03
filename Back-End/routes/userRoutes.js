@@ -11,6 +11,7 @@
 import express from 'express';
 import {
   getMyProfile,
+  updateMyProfile,
   getUsers,
   getUser,
   updateUser,
@@ -22,11 +23,14 @@ const router = express.Router();
 
 // Normal user - View own profile
 router.get('/me', protect, getMyProfile);
+router.put('/me', protect, updateMyProfile);
+
 
 // Admin-only routes
 router.get('/', protect, adminOnly, getUsers);
 router.get('/:id', protect, adminOnly, getUser);
 router.put('/:id', protect, adminOnly, updateUser);
 router.delete('/:id', protect, adminOnly, deleteUser);
+
 
 export default router;

@@ -28,7 +28,7 @@ const UserDetailsForm = () => {
 
   return (
     <div className="container mt-5">
-      <div className="card shadow p-4" style={{ maxWidth: '600px', margin: '0 auto' }}>
+      <div className="card shadow p-4" style={{ maxWidth: '450px', margin: '0 auto' }}>
         <h2 className="text-center mb-4">User Details</h2>
         
         <Form onSubmit={handleSubmit}>

@@ -108,6 +108,7 @@
 //   res.json(rent);
 // };
 
+// controllers/rentController.js
 import { Rent } from '../models/Rent.js';
 import { Book } from '../models/Book.js';
 import { User } from '../models/User.js';
@@ -115,30 +116,13 @@ import { User } from '../models/User.js';
 export const createRent = async (req, res) => {
   try {
     const { book: bookId } = req.body;
+    const book = await Book.findById(Id);
+    if (!book) return res.status(404).json({ message: 'Book not found' });
+    if (!book.isAvailable) return res.status(400).json({ message: 'Book is not available' });
 
-    // 1. Get book
-    const book = await Book.findById(bookId);
-    if (!book) {
-      return res.status(404).json({ message: 'Book not found' });
-    }
+    const user = req.user;
+    if (!user || user.role === 'admin') return res.status(403).json({ message: 'Only users can rent books' });
 
-    if (!book.isAvailable) {
-      return res.status(400).json({ message: 'Book is currently not available for rent' });
-    }
-
-    // 2. Optionally get user (you already have req.user.id)
-    // const user = await User.findById(req.user.id);
-        const user = req.user;
-
-    if (!user) {
-      return res.status(401).json({ message: 'User not found' });
-    }
-
-    if (user.role === 'admin') {
-      return res.status(403).json({ message: 'Admins cannot rent books' });
-    }
-
-    // 3. Create rent entry
     const rent = await Rent.create({
       book: book._id,
       user: user._id,
@@ -146,7 +130,6 @@ export const createRent = async (req, res) => {
       paymentStatus: 'pending',
       rentStatus: 'pending',
       lateFee: 0
-      // rentDate and expectedReturnDate to be set by admin later
     });
 
     res.status(201).json(rent);
@@ -163,17 +146,18 @@ export const getMyRents = async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch your rents', error: err.message });
   }
 };
+
 export const getAllRents = async (req, res) => {
   try {
     const rents = await Rent.find()
       .populate({ path: 'book', select: 'title author _id' })
       .populate({ path: 'user', select: 'name email _id' });
-
     res.json(rents);
   } catch (err) {
     res.status(500).json({ message: 'Failed to fetch rents', error: err.message });
   }
 };
+
 export const getRentById = async (req, res) => {
   try {
     const rent = await Rent.findById(req.params.id)
@@ -181,25 +165,22 @@ export const getRentById = async (req, res) => {
       .populate({ path: 'user', select: 'name email _id' });
 
     if (!rent) return res.status(404).json({ message: 'Rent not found' });
-
     res.json(rent);
   } catch (err) {
     res.status(500).json({ message: 'Error retrieving rent', error: err.message });
   }
 };
+
 export const updateRent = async (req, res) => {
   try {
     const rent = await Rent.findById(req.params.id);
     if (!rent) return res.status(404).json({ message: 'Rent not found' });
 
     const { rentStatus, returnDate, paymentStatus } = req.body;
-
-    // Update fields if provided
     if (rentStatus) rent.rentStatus = rentStatus;
     if (returnDate) rent.returnDate = returnDate;
     if (paymentStatus) rent.paymentStatus = paymentStatus;
 
-    // If returned, mark book as available again
     if (rentStatus === 'returned' || returnDate) {
       const book = await Book.findById(rent.book);
       if (book) {
@@ -214,22 +195,19 @@ export const updateRent = async (req, res) => {
     res.status(500).json({ message: 'Failed to update rent', error: err.message });
   }
 };
+
 export const approveRent = async (req, res) => {
   try {
     const rent = await Rent.findById(req.params.id);
     if (!rent) return res.status(404).json({ message: 'Rent not found' });
-
-    if (rent.rentStatus === 'approved') {
-      return res.status(400).json({ message: 'Rent already approved' });
-    }
+    if (rent.rentStatus === 'approved') return res.status(400).json({ message: 'Already approved' });
 
     const book = await Book.findById(rent.book);
-    if (!book) return res.status(404).json({ message: 'Book not found' });
-    if (!book.isAvailable) return res.status(400).json({ message: 'Book is not available' });
+    if (!book || !book.isAvailable) return res.status(400).json({ message: 'Book is not available' });
 
     const rentDate = new Date();
     const expectedReturnDate = new Date(rentDate);
-    expectedReturnDate.setDate(rentDate.getDate() + book.rentPeriod);
+    expectedReturnDate.setDate(rentDate.getDate() + (book.rentPeriod || 14));
 
     rent.rentDate = rentDate;
     rent.expectedReturnDate = expectedReturnDate;
@@ -247,21 +225,14 @@ export const approveRent = async (req, res) => {
 
 export const rejectRent = async (req, res) => {
   try {
-    const rentId = req.params.id;
-
-    const rent = await Rent.findById(rentId);
-    if (!rent) {
-      return res.status(404).json({ message: 'Rent request not found' });
-    }
-
-    if (rent.rentStatus === 'approved') {
-      return res.status(400).json({ message: 'Cannot reject an already approved rent' });
-    }
+    const rent = await Rent.findById(req.params.id);
+    if (!rent) return res.status(404).json({ message: 'Rent not found' });
+    if (rent.rentStatus === 'approved') return res.status(400).json({ message: 'Cannot reject approved rent' });
 
     rent.rentStatus = 'rejected';
     await rent.save();
 
-    res.json({ message: 'Rent request rejected', rent });
+    res.json({ message: 'Rent rejected', rent });
   } catch (err) {
     res.status(500).json({ message: 'Failed to reject rent', error: err.message });
   }
@@ -270,18 +241,12 @@ export const rejectRent = async (req, res) => {
 export const markAsReturned = async (req, res) => {
   try {
     const rent = await Rent.findById(req.params.id);
-    if (!rent) {
-      return res.status(404).json({ message: 'Rent not found' });
-    }
-
-    if (rent.rentStatus !== 'approved') {
-      return res.status(400).json({ message: 'Only approved rents can be marked as returned' });
-    }
+    if (!rent) return res.status(404).json({ message: 'Rent not found' });
+    if (rent.rentStatus !== 'approved') return res.status(400).json({ message: 'Only approved rents can be returned' });
 
     const today = new Date();
     rent.returnDate = today;
 
-    // Calculate late fee
     if (rent.expectedReturnDate && today > rent.expectedReturnDate) {
       const lateDays = Math.ceil((today - rent.expectedReturnDate) / (1000 * 60 * 60 * 24));
       const book = await Book.findById(rent.book);
@@ -293,7 +258,6 @@ export const markAsReturned = async (req, res) => {
     rent.rentStatus = 'returned';
     await rent.save();
 
-    // Make book available again
     const book = await Book.findById(rent.book);
     if (book) {
       book.isAvailable = true;
@@ -305,7 +269,6 @@ export const markAsReturned = async (req, res) => {
     res.status(500).json({ message: 'Failed to mark as returned', error: err.message });
   }
 };
-
 
 
 

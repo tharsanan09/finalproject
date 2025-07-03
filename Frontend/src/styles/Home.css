@@ -1,4 +1,5 @@
 
+
 /* Clip bottom‑right of hero image for curved corner */
 .hero-img {
   clip-path: inset(0 0 0 0 round 0 0 0 30%);
@@ -106,14 +107,5 @@ color: #7a00c5;
 .text-purplehome {
   color: #6f42c1;
 }
-
-
-
-
-
-
-
-  
-
 
 

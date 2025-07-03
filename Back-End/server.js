@@ -3,12 +3,12 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import cors from 'cors';
-
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import bookRoutes from './routes/bookRoutes.js';
 import rentRoutes from './routes/rentRoutes.js';
 import feedbackRoutes from './routes/feedbackRoutes.js';
+import cookieParser from 'cookie-parser';
 
 
 dotenv.config();       // Load env variables
@@ -18,7 +18,11 @@ const app = express();
 app.use(express.json());
 
 // Middleware connect backend
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5174', // your frontend URL
+  credentials: true                // allow cookies to be sent
+}));
+app.use(cookieParser());
 app.use(express.json()); 
 
 // last
@@ -26,7 +30,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes); // Authentication routes
 app.use('/api/books', bookRoutes);
 app.use('/api/rents', rentRoutes); // Rent routes
-app.use('/api/feedback', feedbackRoutes);
+app.use('/api/feedbacks', feedbackRoutes);
 app.use('/api/Uploads', express.static('Uploads')); // Serve static files from uploads directory
 
 // Sample route

@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const AdminUserTable = () => {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [editForm, setEditForm] = useState({ name: '', email: '', role: '' });
+  const navigate = useNavigate(); //  for back navigation
 
-  // Fetch users
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -17,23 +18,27 @@ const AdminUserTable = () => {
         const res = await axios.get("http://localhost:5000/api/users", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setUsers(res.data);
+
+        const normalizedUsers = res.data.map(u => ({
+          ...u,
+          _id: u._id || u.id,
+        }));
+
+        setUsers(normalizedUsers);
       } catch (err) {
-        console.error("Error fetching users:", err.message);
+        alert("Error fetching users: " + (err.response?.data?.message || err.message));
       }
     };
 
     fetchUsers();
   }, []);
 
-  // Open edit modal
   const handleEditClick = (user) => {
     setEditingUser(user);
     setEditForm({ name: user.name, email: user.email, role: user.role });
     setShowModal(true);
   };
 
-  // Update user in DB
   const handleUpdate = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -41,18 +46,16 @@ const AdminUserTable = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      // Update UI
-      setUsers((prev) =>
-        prev.map((u) => (u._id === editingUser._id ? { ...u, ...editForm } : u))
+      setUsers(prev =>
+        prev.map(u => (u._id === editingUser._id ? { ...u, ...editForm } : u))
       );
 
       setShowModal(false);
     } catch (err) {
-      console.error("Error updating user:", err.message);
+      alert("Error updating user: " + (err.response?.data?.message || err.message));
     }
   };
 
-  // Delete user
   const handleDelete = async (userId) => {
     if (!window.confirm("Are you sure to delete this user?")) return;
 
@@ -62,20 +65,29 @@ const AdminUserTable = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      setUsers((prev) => prev.filter((u) => u._id !== userId));
+      setUsers(prev => prev.filter(u => u._id !== userId));
     } catch (err) {
-      console.error("Error deleting user:", err.message);
+      alert("Error deleting user: " + (err.response?.data?.message || err.message));
     }
   };
 
   return (
     <div className="container mt-5">
+      {/*  Back Button */}
+      <button 
+  className="btn text-white btn-outline-secondary" 
+  onClick={() => navigate(-1)}
+  style={{ backgroundColor: 'black' }}
+>
+  Back
+</button>
+
       <h2 className="mb-4 text-center">User Management</h2>
       <div className="table-responsive">
         <table className="table table-bordered table-hover text-center align-middle">
           <thead className="table-dark">
             <tr>
-              <th>user Id</th>
+              <th>User ID</th>
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
@@ -87,8 +99,8 @@ const AdminUserTable = () => {
           <tbody>
             {users.length > 0 ? (
               users.map((user) => (
-                <tr key={user._id || user.id}>
-                 <td>{user._id || user.id}</td>
+                <tr key={user._id}>
+                  <td>{user._id}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>

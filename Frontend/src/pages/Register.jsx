@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from '../utils/axiosInstance'; // ✅ Your custom axios with baseURL
+import axios from '../utils/axiosInstance'; //  Your custom axios with baseURL
 // import axios from 'axios';
 
 const Register = () => {

@@ -9,7 +9,7 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-   bookprice: {
+   rentprice: {
     type: Number,
     required: true,
     default: 0 // Default price if not provided
@@ -33,6 +33,7 @@ const bookSchema = new mongoose.Schema({
     type: String,
     default: 'Tamil'
   },
+  
   imageUrl: {
     type: String // Image path or URL
   },
@@ -64,32 +65,20 @@ const bookSchema = new mongoose.Schema({
   id: false,
  toJSON: {
   virtuals: true,
-  transform: function (doc, ret) {
-    ret.Book_id = ret._id;
-    delete ret._id;
-    delete ret.__v;
+transform: function (doc, ret) {
+  ret.Book_id = ret._id;
+  delete ret._id;
+  delete ret.__v;
 
-    // Reorder fields: move Book_id to the top
-    const reordered = {
-      Book_id: ret.Book_id,
-      title: ret.title,
-      author: ret.author,
-      isbn: ret.isbn,
-      description: ret.description,
-      publishedDate: ret.publishedDate,
-      language: ret.language,
-      imageUrl: ret.imageUrl,
-      isAvailable: ret.isAvailable,
-      rentPeriod: ret.rentPeriod,
-      latePeriod: ret.latePeriod,
-      lateFee: ret.lateFee,
-      createdAt: ret.createdAt,
-      updatedAt: ret.updatedAt
-    };
+  // Optional: move Book_id to top, but keep all fields
+  const reordered = {
+    Book_id: ret.Book_id,
+    ...ret
+  };
 
-    return reordered;
-  }
+  return reordered;
 }
+ }
 });
 
 export const Book = mongoose.model('Book', bookSchema);

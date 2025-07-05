@@ -90,6 +90,9 @@ const AdminUserTable = () => {
               <th>User ID</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Phone No</th> 
+               <th>NIC</th>   
+              <th>Address</th> 
               <th>Role</th>
               <th>Created At</th>
               <th>Updated At</th>
@@ -103,6 +106,9 @@ const AdminUserTable = () => {
                   <td>{user._id}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
+                   <td>{user.phoneNumber || 'N/A'}</td> 
+                   <td>{user.icNumber || 'N/A'}</td>    
+                  <td>{user.address || 'N/A'}</td>
                   <td>
                     <span className={`badge ${user.role === 'admin' ? 'bg-danger' : 'bg-secondary'}`}>
                       {user.role}
@@ -138,7 +144,7 @@ const AdminUserTable = () => {
                 onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
               />
             </Form.Group>
-            <Form.Group className="mb-2">
+            <Form.Group className="mb-2 ">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"

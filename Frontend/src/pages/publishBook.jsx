@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/AdminDashboard.css'; // Assuming you have a CSS file for styles
 
 const PublishBook = () => {
   const [book, setBook] = useState({
@@ -81,7 +82,7 @@ const PublishBook = () => {
           </div>
 
           {/* Submit */}
-          <button type="submit" className="btn w-100" style={{ backgroundColor: '#66146b', color: 'white', fontWeight: 'bold', borderRadius: '20px' }}>
+          <button type="submit" className="btn btn-purple w-100" style={{ color: 'white', fontWeight: 'bold', borderRadius: '20px' }}>
             Submit
           </button>
         </form>

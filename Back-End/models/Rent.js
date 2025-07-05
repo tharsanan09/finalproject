@@ -17,6 +17,7 @@ const rentSchema = new mongoose.Schema({
   },
   expectedReturnDate: {
     type: Date,
+    default:1,
     // Set by admin, typically 14 days from rentDate
   },
   returnDate: {
@@ -40,11 +41,19 @@ const rentSchema = new mongoose.Schema({
   },
   lateFee: {
     type: Number,
-    default: 0,
+    default: 50,
   },
   rentprice:{
     type:Number,
   },
+
+  // user details
+   fullName: String,
+  email: String,
+  phoneNumber: String,
+  address: String,
+  icNumber: String,
+  gender: String
   
 }, {
   timestamps: true,

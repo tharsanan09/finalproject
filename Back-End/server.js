@@ -19,7 +19,7 @@ app.use(express.json());
 
 // Middleware connect backend
 app.use(cors({
-  origin: 'http://localhost:5174', // your frontend URL
+  origin: 'http://localhost:5173', // your frontend URL
   credentials: true                // allow cookies to be sent
 }));
 app.use(cookieParser());
@@ -32,6 +32,7 @@ app.use('/api/books', bookRoutes);
 app.use('/api/rents', rentRoutes); // Rent routes
 app.use('/api/feedbacks', feedbackRoutes);
 app.use('/api/Uploads', express.static('Uploads')); // Serve static files from uploads directory
+
 
 // Sample route
 app.get('/', (req, res) => {

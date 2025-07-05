@@ -8,10 +8,12 @@ import { FaBook, FaUser, FaTruck, FaExclamationCircle } from 'react-icons/fa';
   import AdminRentManagement from './Managements/AdminRentManagement';
 
 const AdminDashboard = () => {
-  const navigate = useNavigate(); // ✅ Initialize navigation hook
+
+
+  const navigate = useNavigate(); //  Initialize navigation hook
 
   return (
-    <div className="container" style={{backgroundcolor: '#532a09'}}>
+    <div className="container" style={{backgroundcolor: '#e6cab3'}}>
       {/* Top Tabs */}
       <div className="d-flex gap-3 mt-5 mb-4">
         <button
@@ -37,7 +39,7 @@ const AdminDashboard = () => {
       <div className="row g-4">
         <div className="col-md-4 w-25">
           <div className="dashboard-card shadow-sm p-3 text-center" >
-            <FaBook size={30} className="mb-2" />
+            <FaBook size={40} className="mb-2" />
             <h6 className="fw-bold">Total Books</h6>
             <p className="text-purple fs-4">24</p>
           </div>
@@ -45,7 +47,7 @@ const AdminDashboard = () => {
 
         <div className="col-md-4 w-25">
           <div className="dashboard-card shadow-sm p-3 text-center">
-            <FaUser size={30} className="mb-2" />
+            <FaUser size={40} className="mb-2" />
             <h6 className="fw-bold">Total Users</h6>
             <p className="text-purple fs-4">12</p>
           </div>
@@ -53,7 +55,7 @@ const AdminDashboard = () => {
 
         <div className="col-md-4 w-25">
           <div className="dashboard-card shadow-sm p-3 text-center">
-            <FaTruck size={30} className="mb-2" />
+            <FaTruck size={40} className="mb-2" />
             <h6 className="fw-bold">Books Borrowed</h6>
             <p className="text-purple fs-4">6</p>
           </div>
@@ -61,7 +63,7 @@ const AdminDashboard = () => {
 
         <div className="col-md-4 w-25">
           <div className="dashboard-card shadow-sm p-3 text-center">
-            <FaExclamationCircle size={30} className="mb-2 text-danger" />
+            <FaExclamationCircle size={40} className="mb-2 text-danger" />
             <h6 className="fw-bold">Overdue Returns</h6>
             <p className="text-danger fs-4">4</p>
           </div>

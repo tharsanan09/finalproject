@@ -37,7 +37,7 @@ const Login = () => {
       if (res.data.user.role === "admin") {
         navigate('/admin');
       } else {
-        navigate('/');
+        navigate('/books');
       }
 
     } catch (err) {
@@ -49,7 +49,7 @@ const Login = () => {
   return (
     <div className="container d-flex flex-column align-items-center justify-content-center vh-100">
       <h3 className="text-center fw-bold mb-2">Welcome To Log in Page</h3>
-      <div className="card p-4 shadow rounded-4 border-purple" style={{ maxWidth: '330px', width: '100%' }}>
+      <div className="card p-4 shadow-lg rounded-4 border-black" style={{ maxWidth: '330px', width: '100%', backgroundColor: '#45575b' }}>
         <h4 className="text-center fw-bold mb-3">Log in</h4>
 
         {error && <p className="text-danger text-center">{error}</p>}
@@ -104,7 +104,7 @@ const Login = () => {
 
         <p className="text-center fw-medium">
           Don’t have an account?{' '}
-          <Link to="/register" className="text-primary fw-bold">Sign Up</Link>
+          <Link to="/register" className="text-light fw-bold">Sign Up</Link>
         </p>
       </div>
     </div>

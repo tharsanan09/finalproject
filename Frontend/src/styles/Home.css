@@ -81,16 +81,14 @@
 .glass-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-color: #7a00c5; 
+color: #45575b; 
 }
 
 /* section 4 */
 
 
 /* section 5 */
-.btn-purple:hover {
-  background-color: #5936a3;
-}
+
 
 .carousel-item {
   padding: 40px 20px; 
@@ -101,11 +99,11 @@ color: #7a00c5;
   object-fit: cover;
 }
 .text-purple {
-  color: #6f42c1;
+  color: black;
 }
 
 .text-purplehome {
-  color: #6f42c1;
+  color: black;
 }
 
 

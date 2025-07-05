@@ -17,7 +17,7 @@ function Home() {
   return (
     <>
     {/* section1 */}
-   <div className="full-width-bg" style={{ backgroundColor: '#caba9c', padding: '20px 0' }}>
+   <div className="full-width-bg" style={{ backgroundColor: '#a3a39b', padding: '20px 0' }}>
   <section className="hero-wrapper container position-relative">
     <h2 className="text-center fw-bold" style={{ marginTop: '90px' }}>
       
@@ -85,7 +85,6 @@ function Home() {
       </div>
     </div>
 
-   
   </div>
 </section>
 

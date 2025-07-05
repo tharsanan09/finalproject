@@ -1,27 +1,21 @@
 .btn-purple {
-  background-color: #310a05;
+  background-color: #273c41;
   color: white;
   border: none;
 }
 .btn-purple:hover {
-  background-color: #ad8042;
+  background-color: #a3a39b;
 }
 
 .dashboard-card {
   border: 1px solid #dcdcdc;
   border-radius: 12px;
-  background-color: #90a955;
-}
-.bg-purple{
-    background-color: #9c27b0;
-}
-
-.text-purple {
-  color: #9c27b0;
+  background-color: #45575b;
 }
 .d-flex2 {
     margin-top: 70px;
     margin-left: 150px;
      
 }
+
 

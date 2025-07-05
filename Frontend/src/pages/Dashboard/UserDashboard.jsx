@@ -64,9 +64,9 @@ const UserDashboard = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" style={{ backgroundColor: '' }}>
       {/* User Info Card */}
-      <div className="card shadow-sm p-4 mb-4">
+      <div className="card w-50 shadow-sm p-4 mb-4">
         <h3 className="mb-4 text-center fw-bold">User Profile</h3>
 
         {isEditing ? (
@@ -109,7 +109,7 @@ const UserDashboard = () => {
             <p><strong>Name:</strong> {user.name}</p>
             <p><strong>Email:</strong> {user.email}</p>
             <p><strong>Role:</strong> {user.role}</p>
-            <button className="btn btn-primary" onClick={handleEditToggle}>Edit Profile</button>
+            <button className="btn btn-purple w-50" onClick={handleEditToggle}>Edit Profile</button>
           </>
         )}
       </div>

@@ -48,13 +48,13 @@ const Register = () => {
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
-      <div className="p-4 mt-5 shadow"
+      <div className="p-4 mt-5 shadow-lg"
         style={{
           width: '100%',
-          maxWidth: '400px',
-          border: '2px solid #9c27b0',
-          borderRadius: '20px',
-          backgroundColor: '#fff',
+          maxWidth: '380px',
+          border: '1px black solid',
+          borderRadius: '10px',
+          backgroundColor: '#45575b',
         }}>
         <h3 className="text-center mb-3 fw-bold">Sign up</h3>
 
@@ -132,7 +132,7 @@ const Register = () => {
         </form>
 
         <p className="text-center mt-3 mb-0">
-          You have an account? <Link to="/login" className="text-primary fw-bold">Sign in</Link>
+          You have an account? <Link to="/login" className="text-light fw-bold">Sign in</Link>
         </p>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Modal, Button, Spinner, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import UserDetailsForm from './UserDetailsForm';
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -128,7 +129,7 @@ const BookDetails = () => {
            <Button 
   variant={book.isAvailable ? 'primary' : 'secondary'}
   className="px-4 rounded-pill"
-  onClick={handleBorrow}
+  onClick={handleBorrowClick}
   disabled={!book.isAvailable}
 >
   {book.isAvailable ? 'Borrow' : 'Not Available'}
@@ -148,7 +149,7 @@ const BookDetails = () => {
             <p><strong>Published Date:</strong> {book.publishedDate ? new Date(book.publishedDate).toLocaleDateString() : 'N/A'}</p>
             <p><strong>Rent Price:</strong> Rs. {book.rentprice || '0'}</p>
             <p><strong>Rent Period:</strong> {book.rentPeriod || '14'} days</p>
-            <p><strong>Late Fee:</strong> Rs. {book.lateFee || '0'}/day</p>
+            
           </div>
 
           <div className="mt-3">
@@ -170,8 +171,11 @@ const BookDetails = () => {
           <Modal.Title>Borrow {book.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* Your UserDetailsForm component here */}
-          <p>Borrow form would go here</p>
+          
+              {/* <UserDetailsForm selectedBookId={book._id} onClose={handleCloseForm} /> */}
+<UserDetailsForm selectedBookId={book.Book_id}  />
+
+
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseForm}>
